@@ -15,10 +15,10 @@ A lightweight World of Warcraft (**Forever / Retail**) addon that automatically 
 2. Restart the game or type `/reload` in chat.
 
 ### Usage
-* `/baap on` — Enables automatic confirmation.
-* `/baap off` — Disables the addon completely.
-* `/baap ctrl` | `alt` | `shift` | `none` — Sets the required safety modifier key (`none` confirms immediately without holding a key).
-* `/baap` — Displays current status, active modifier key, and available commands.
+* `/baap on` - Enables automatic confirmation.
+* `/baap off` - Disables the addon completely.
+* `/baap ctrl` | `alt` | `shift` | `none` - Sets the required safety modifier key (`none` confirms immediately without holding a key).
+* `/baap` - Displays current status, active modifier key, and available commands.
 
 ---
 
@@ -35,7 +35,7 @@ A lightweight World of Warcraft (**Forever / Retail**) addon that automatically 
 2. Relancez le jeu ou tapez `/reload` dans le chat.
 
 ### Utilisation
-* `/baap on` — Active la validation automatique.
-* `/baap off` — Désactive complètement l'addon.
-* `/baap ctrl` | `alt` | `maj` | `none` — Définit la touche de sécurité à maintenir (`none` valide directement sans toucher au clavier).
-* `/baap` — Affiche le statut actuel, la touche configurée et l'aide des commandes.
+* `/baap on` - Active la validation automatique.
+* `/baap off` - Désactive complètement l'addon.
+* `/baap ctrl` | `alt` | `maj` | `none` - Définit la touche de sécurité à maintenir (`none` valide directement sans toucher au clavier).
+* `/baap` - Affiche le statut actuel, la touche configurée et l'aide des commandes.
