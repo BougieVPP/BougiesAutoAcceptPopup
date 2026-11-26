@@ -8,39 +8,80 @@ local AH_POPUPS = {
     ["AUCTION_HOUSE_POST_WARNING"] = true,
 }
 
--- Touche de sécurité : Alt
+-- Libellés lisibles pour l'affichage dans le chat
+local KEY_LABELS = {
+    ALT = "ALT",
+    CTRL = "CTRL",
+    SHIFT = "SHIFT",
+    NONE = "/!\ NONE /!\",
+}
+
+-- Vérifie si la touche de sécurité configurée est maintenue
 local function IsSafetyKeyHeld()
-    return IsAltKeyDown()
+    local key = (BougiesAutoAcceptPopupDB and BougiesAutoAcceptPopupDB.safetyKey) or "ALT"
+    if key == "NONE" then
+        return true
+    elseif key == "CTRL" then
+        return IsControlKeyDown()
+    elseif key == "SHIFT" then
+        return IsShiftKeyDown()
+    else
+        return IsAltKeyDown()
+    end
 end
 
--- Initialisation de la sauvegarde au chargement de l'addon
+-- Initialisation des SavedVariables et rappel à la connexion
 local eventFrame = CreateFrame("Frame")
 eventFrame:RegisterEvent("ADDON_LOADED")
-eventFrame:SetScript("OnEvent", function(self, event, addonName)
-    if addonName == ADDON_NAME then
+eventFrame:RegisterEvent("PLAYER_LOGIN")
+
+eventFrame:SetScript("OnEvent", function(self, event, arg1)
+    if event == "ADDON_LOADED" and arg1 == ADDON_NAME then
         if type(BougiesAutoAcceptPopupDB) ~= "table" then
-            BougiesAutoAcceptPopupDB = { isEnabled = false }
+            BougiesAutoAcceptPopupDB = {}
+        end
+        if BougiesAutoAcceptPopupDB.isEnabled == nil then
+            BougiesAutoAcceptPopupDB.isEnabled = false
+        end
+        if not BougiesAutoAcceptPopupDB.safetyKey then
+            BougiesAutoAcceptPopupDB.safetyKey = "ALT"
         end
         self:UnregisterEvent("ADDON_LOADED")
+
+    elseif event == "PLAYER_LOGIN" then
+        local status = BougiesAutoAcceptPopupDB.isEnabled and "|cff00ff00ACTIVATED|r" or "|cffff0000NOT ACTIVATED|r"
+        local keyLabel = KEY_LABELS[BougiesAutoAcceptPopupDB.safetyKey] or "Alt"
+        print("|cffffff00[Bougie's Auto Accept Popup]|r Status : " .. status .. " | Key : |cff00ccff" .. keyLabel .. "|r")
+        self:UnregisterEvent("PLAYER_LOGIN")
     end
 end)
 
--- Gestion des commandes /baap on et /baap off
+-- Gestion des commandes /baap
 SLASH_BOUGIESAUTOACCEPTPOPUP1 = "/baap"
 SlashCmdList["BOUGIESAUTOACCEPTPOPUP"] = function(msg)
     local cmd = string.lower(strtrim(msg or ""))
     
     if cmd == "on" then
         BougiesAutoAcceptPopupDB.isEnabled = true
-        print("|cff00ff00[Bougie's Auto Accept Popup]|r : ACTIVÉ (maintenez Alt pour valider).")
+        local keyLabel = KEY_LABELS[BougiesAutoAcceptPopupDB.safetyKey] or "Alt"
+        print("|cff00ff00[Bougie's Auto Accept Popup]|r : ACTIVATED (Touche : |cff00ccff" .. keyLabel .. "|r).")
+
     elseif cmd == "off" then
         BougiesAutoAcceptPopupDB.isEnabled = false
-        print("|cffff0000[Bougie's Auto Accept Popup]|r : DÉSACTIVÉ.")
+        print("|cffff0000[Bougie's Auto Accept Popup]|r : NOT ACTIVATED.")
+
+    elseif cmd == "alt" or cmd == "ctrl" or cmd == "maj" or cmd == "shift" or cmd == "none" then
+        local normalized = (cmd == "maj") and "SHIFT" or string.upper(cmd)
+        BougiesAutoAcceptPopupDB.safetyKey = normalized
+        local keyLabel = KEY_LABELS[normalized]
+        print("|cffffff00[Bougie's Auto Accept Popup]|r Security key setup on : |cff00ccff" .. keyLabel .. "|r.")
+
     else
         local isEnabled = BougiesAutoAcceptPopupDB and BougiesAutoAcceptPopupDB.isEnabled
         local status = isEnabled and "|cff00ff00ACTIVÉ|r" or "|cffff0000DÉSACTIVÉ|r"
-        print("|cffffff00[Bougie's Auto Accept Popup]|r Statut actuel : " .. status)
-        print("Utilisation : |cff00ccff/baap on|r ou |cff00ccff/baap off|r")
+        local keyLabel = KEY_LABELS[(BougiesAutoAcceptPopupDB and BougiesAutoAcceptPopupDB.safetyKey) or "ALT"]
+        print("|cffffff00[Bougie's Auto Accept Popup]|r Status : " .. status .. " | Key : |cff00ccff" .. keyLabel .. "|r")
+        print("Commands : |cff00ccff/baap on|r | |cff00ccffoff|r | |cff00ccffctrl|r | |cff00ccffalt|r | |cff00ccffmaj|r | |cff00ccffnone|r")
     end
 end
 
@@ -62,4 +103,3 @@ hooksecurefunc("StaticPopup_Show", function(which)
         end
     end
 end)
-
