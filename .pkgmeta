@@ -1,1 +1,7 @@
+package-as: BougiesAutoAcceptPopup
+
+ignore:
+  - README.md
+  - logo.png
+  - .github
 
