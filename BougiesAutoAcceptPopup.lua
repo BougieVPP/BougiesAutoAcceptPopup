@@ -49,7 +49,7 @@ eventFrame:SetScript("OnEvent", function(self, event, arg1)
         self:UnregisterEvent("ADDON_LOADED")
 
     elseif event == "PLAYER_LOGIN" then
-        local status = BougiesAutoAcceptPopupDB.isEnabled and "|cff00ff00ACTIVATED|r" or "|cffff0000NOT ACTIVATED|r"
+        local status = BougiesAutoAcceptPopupDB.isEnabled and "|cff00ff00ENABLED|r" or "|cffff0000DISABLED|r"
         local keyLabel = KEY_LABELS[BougiesAutoAcceptPopupDB.safetyKey] or "Alt"
         print("|cffffff00[Bougie's Auto Accept Popup]|r Status : " .. status .. " | Key : |cff00ccff" .. keyLabel .. "|r")
         self:UnregisterEvent("PLAYER_LOGIN")
@@ -64,11 +64,11 @@ SlashCmdList["BOUGIESAUTOACCEPTPOPUP"] = function(msg)
     if cmd == "on" then
         BougiesAutoAcceptPopupDB.isEnabled = true
         local keyLabel = KEY_LABELS[BougiesAutoAcceptPopupDB.safetyKey] or "Alt"
-        print("|cff00ff00[Bougie's Auto Accept Popup]|r : ACTIVATED (Touche : |cff00ccff" .. keyLabel .. "|r).")
+        print("|cff00ff00[Bougie's Auto Accept Popup]|r : ENABLED (Key : |cff00ccff" .. keyLabel .. "|r).")
 
     elseif cmd == "off" then
         BougiesAutoAcceptPopupDB.isEnabled = false
-        print("|cffff0000[Bougie's Auto Accept Popup]|r : NOT ACTIVATED.")
+        print("|cffff0000[Bougie's Auto Accept Popup]|r : DISABLED.")
 
     elseif cmd == "alt" or cmd == "ctrl" or cmd == "maj" or cmd == "shift" or cmd == "none" then
         local normalized = (cmd == "maj") and "SHIFT" or string.upper(cmd)
@@ -78,7 +78,7 @@ SlashCmdList["BOUGIESAUTOACCEPTPOPUP"] = function(msg)
 
     else
         local isEnabled = BougiesAutoAcceptPopupDB and BougiesAutoAcceptPopupDB.isEnabled
-        local status = isEnabled and "|cff00ff00ACTIVÉ|r" or "|cffff0000DÉSACTIVÉ|r"
+        local status = isEnabled and "|cff00ff00ENABLED|r" or "|cffff0000DISABLED|r"
         local keyLabel = KEY_LABELS[(BougiesAutoAcceptPopupDB and BougiesAutoAcceptPopupDB.safetyKey) or "ALT"]
         print("|cffffff00[Bougie's Auto Accept Popup]|r Status : " .. status .. " | Key : |cff00ccff" .. keyLabel .. "|r")
         print("Commands : |cff00ccff/baap on|r | |cff00ccffoff|r | |cff00ccffctrl|r | |cff00ccffalt|r | |cff00ccffmaj|r | |cff00ccffnone|r")
