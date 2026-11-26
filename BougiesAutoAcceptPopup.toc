@@ -5,6 +5,6 @@
 ## Version: 1.0.0
 ## SavedVariables: BougiesAutoAcceptPopupDB
 ## IconTexture: Interface\AddOns\BougiesAutoAcceptPopup\BougiesAutoAcceptPopup.tga
-## X-Curse-Project-ID: XXXXX
+## X-Curse-Project-ID: 1832817
 
 BougiesAutoAcceptPopup.lua
