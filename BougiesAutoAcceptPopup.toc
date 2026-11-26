@@ -1,1 +1,9 @@
+## Interface: 120105
+## Title: Bougie's Auto Accept Popup
+## Notes: Valide automatiquement les popups d'achat à l'HV (/baap on | off).
+## Author: Bougie
+## Version: 1.0.0
+## SavedVariables: BougiesAutoAcceptPopupDB
+## X-Curse-Project-ID: XXXXX
 
+BougiesAutoAcceptPopup.lua
