@@ -1,4 +1,4 @@
-## Interface: 120105
+## Interface: 120105, 16001
 ## Title: Bougie's Auto Accept Popup
 ## Notes: Valide automatiquement les popups d'achat à l'HV (/baap on | off).
 ## Author: Bougie
