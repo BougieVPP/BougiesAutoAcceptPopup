@@ -1,4 +1,4 @@
-# BougiesAutoBuy
+# BougiesAutoAcceptPopup
 
 A lightweight World of Warcraft (**Midnight / Forever**) addon that automatically confirms Auction House purchase and commodity confirmation popups while holding a modifier key.
 
@@ -16,9 +16,9 @@ A lightweight World of Warcraft (**Midnight / Forever**) addon that automaticall
 3. Restart the game or type `/reload` in chat.
 
 ### Usage
-* `/bab on` — Enables automatic confirmation (hold **Alt** while clicking Buy/Buyout).
-* `/bab off` — Disables the addon completely.
-* `/bab` — Displays the current status in chat.
+* `/baap on` — Enables automatic confirmation (hold **Alt** while clicking Buy/Buyout).
+* `/baap off` — Disables the addon completely.
+* `/baap` — Displays the current status in chat.
 
 ---
 
@@ -36,6 +36,6 @@ A lightweight World of Warcraft (**Midnight / Forever**) addon that automaticall
 3. Relancez le jeu ou tapez `/reload` dans le chat.
 
 ### Utilisation
-* `/bab on` — Active la validation automatique (maintenez **Alt** en cliquant sur Acheter).
-* `/bab off` — Désactive complètement l'addon.
-* `/bab` — Affiche le statut actuel de l'addon dans le chat.
+* `/baap on` — Active la validation automatique (maintenez **Alt** en cliquant sur Acheter).
+* `/baap off` — Désactive complètement l'addon.
+* `/baap` — Affiche le statut actuel de l'addon dans le chat.
