@@ -1,6 +1,6 @@
 # Bougie's Auto Accept Popup (`BougiesAutoAcceptPopup`)
 
-A lightweight World of Warcraft (**Midnight / Forever**) addon that automatically accepts Auction House purchase and commodity confirmation popups, with customizable modifier key safety and persistent settings.
+A lightweight World of Warcraft (**Forever / Retail**) addon that automatically accepts Auction House purchase and commodity confirmation popups, with customizable modifier key safety and persistent settings.
 
 ## 🇬🇧 English
 
